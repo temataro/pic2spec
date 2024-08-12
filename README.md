@@ -33,3 +33,4 @@ Repeat for `HEIGHT` rows.
 TODOs:
   - Information lost during complex ifft -> real wav file conversion. I'm currently
   doing 2 channel data (Re/Im)...
+  - Do again but in C; code golf.
