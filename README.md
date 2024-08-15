@@ -1,7 +1,8 @@
 # Pic2Spec
 
-![Pic](./images/Lena.png) 
-![Spec](./images/v0.1.png) 
+Picture                    | Audio Spectrogram
+:-------------------------:|:-------------------------:
+![Pic](./images/Lena.png)  |  ![Spec](./images/v0.2.png)
 
 Convert a picture's intensity into a Fourier transform every x miliseconds,
 iFFT and save to wav.
@@ -31,6 +32,4 @@ Repeat for `HEIGHT` rows.
 
 
 TODOs:
-  - Information lost during complex ifft -> real wav file conversion. I'm currently
-  doing 2 channel data (Re/Im)...
   - Do again but in C; code golf.
