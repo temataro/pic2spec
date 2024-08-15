@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 
 # TODO: CLI args
+# filename: str = "./images/trollface.png"
 filename: str = "./images/Lena.png"
 
 
@@ -54,13 +55,13 @@ def img_to_intensity(img: npt.NDArray[np.uint8]) -> npt.NDArray[np.float32]:
     height: int = img.shape[1]
 
     intensity: npt.NDArray[np.float32] = np.array(
-        [np.fft.ifft(upscale(img[row])) for row in range(width-1, 0, -1)]
+        [np.fft.ifft(upscale(np.hstack((img[row][::-1], img[row][:-2])))) for row in range(width - 1, 0, -1)]
     ).flatten()
 
     plt.specgram(intensity, cmap='grey')
     plt.show()
 
-    return np.vstack(((intensity.real - np.mean(intensity.real)).astype(np.float32), (intensity.imag - np.mean(intensity.imag)).astype(np.float32))).T
+    return (intensity.real - np.mean(intensity.real)).astype(np.float32)
 
 
 def intensity_to_wav(audio: npt.NDArray[np.float32], samp_rate: int) -> None:
